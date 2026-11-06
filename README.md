@@ -12,7 +12,8 @@ This repository publishes the installers only. Download them from the [Releases 
 
 - [Install](#install) and [Updates](#updates)
 - [Getting started](#getting-started)
-- Core features: [SSH](#ssh-modern-and-legacy-profiles), [Jump host](#jump-host-next-release), [Serial](#serial-console), [Session tree and Shared sessions](#session-tree-and-shared-sessions), [Tabs, tab groups and split panes](#tabs-tab-groups-and-split-panes), [Command window](#command-window), [Highlight rules](#highlight-rules), [Terminal appearance](#terminal-appearance), [Find](#find), [File servers](#file-servers-tftp-ftp-and-sftpscp), [SecureCRT import](#securecrt-import), [SSH keys](#ssh-keys-including-putty-ppk)
+- Core features: [SSH](#ssh-modern-and-legacy-profiles), [Serial](#serial-console), [Session tree and Shared sessions](#session-tree-and-shared-sessions), [Tabs, tab groups and split panes](#tabs-tab-groups-and-split-panes), [Command window](#command-window), [Highlight rules](#highlight-rules), [Terminal appearance](#terminal-appearance), [Find](#find), [File servers](#file-servers-tftp-ftp-and-sftpscp), [SecureCRT import](#securecrt-import), [SSH keys](#ssh-keys-including-putty-ppk)
+- [Other features](#other-features), including the [Jump host](#jump-host-016)
 
 ---
 
@@ -49,6 +50,7 @@ The app password and the Shared folder are optional, and both can be changed lat
 
 - **App password** (Settings > Security). Required at every start, before any session loads. It protects passwords saved in sessions and makes them usable on other PCs that share the same app password. Without it, saved passwords are readable on the PC that saved them only.
 - **Windows Hello.** With an app password set, **Settings > Security** can turn on unlock with Windows Hello (fingerprint, face or PIN) instead of the typed password. Hello is built into ConnSmith and starts no scripts. The setting is per PC, so a second PC needs the app password typed once before Hello is turned on there. Uninstalling ConnSmith switches Hello off, even if the settings are kept.
+- **Shared folder and password.** Steps 3 and 4 pick the team's Shared folder and enter the shared password. **Skip Shared** leaves the Shared store off for now. A chosen Shared folder cannot be finished until its shared password is saved.
 
 ### Connect to a device
 
@@ -86,18 +88,6 @@ When a Modern connection fails because the device offers only older algorithms, 
 
 Also included: host key verification against a known-hosts file, keepalives, a **Reconnect** button after a dropped link, and the negotiated algorithms in the connection info panel (top right icon). **(0.1.6)** For a device whose host key is already saved, ConnSmith asks for that key type first, as OpenSSH does, so a device that has since gained a newer key type does not show a first-connection dialog.
 
-### Jump host (0.1.6)
-
-**Edit session > Jump host** lists the saved SSH sessions. When one is chosen, ConnSmith logs in to it first, with its own saved password, key and settings, and opens the connection to the device through it. Use it for devices that are reachable only from a bastion or management host.
-
-<img src="docs/images/jump-host-edit.png" alt="Edit session with the Jump host drop-down set to bastion" width="520">
-
-- The host key and login questions of the jump host are titled **Jump host**. The connection info panel shows it on the **Via** line.
-- One hop only.
-- A Shared session can use only a Shared session as its jump host, and a session moves to Shared only once its jump host is there.
-
-<img src="docs/images/jump-host-info.png" alt="A connected tab with the connection info panel showing Via bastion" width="900">
-
 **Known limitation:** devices that offer only `diffie-hellman-group1-sha1` (for example older Cisco IOS releases) cannot connect. The tab reports this.
 
 ### Serial console
@@ -132,7 +122,7 @@ A single tree shows the Personal and Shared stores with their folders. The filte
 
 Shared sessions follow one layout: **Client**, an optional **Site**, then a device type folder (**Firewalls**, **Switches**, **VoIP** or **Other**), then the sessions.
 
-- A client's right-click menu has **New site folder…** and **New device folder…**. A site's menu has **New device folder…** only. A client and each of its sites can hold the same device types.
+- A client's right-click menu has **New site folder…** and **New device folder…**. A site's menu has **New device folder…** only. A client and each of its sites can hold the same device types. **New device folder…** lists every device type and greys out the ones the client or site already has.
 - **Move to Shared** asks for client, site and device type. The wizard guesses the site from a folder such as `Acme/London/Switches`.
 - Nothing is created ahead of time. Device type folders cannot be renamed.
 - Folders and sessions already in Shared that do not fit the layout are flagged with a warning and a **Review** button that lists them. Nothing is moved or hidden.
@@ -240,6 +230,7 @@ Graphite Orange (orange on grey) and Matrix (green on black):
 - The panel shows each server's address and, for SFTP and FTP, the login and a password generated each time the server is switched on.
 - The folder is read-only until **Allow uploads** is switched on. The switch resets at every start. Devices cannot delete files or directories.
 - Each transfer is listed with device, file, progress and speed. Refused requests are listed with the reason.
+- SFTP refuses a request to append to a file, because uploads are stored whole, instead of quietly replacing it. TFTP serves a request that a device repeats before the first answer once, so no failed row appears beside the good one.
 - **Allow in Windows Firewall** adds inbound rules for these ports only, after one administrator prompt. Where policy prevents this, the panel shows the equivalent `netsh` command.
 
 ### SecureCRT import
@@ -266,6 +257,18 @@ Keys stay in their original files and are never copied into sessions or the Shar
 - **Paste protection:** pastes are shown for confirmation first and can be sent line by line with per-session line and character delays.
 - **Hostname check:** when the device prompt differs from the saved session name, ConnSmith offers to update the session. A switch in **Settings > Terminal** turns the offer off.
 - **Command palette** for all menu actions.
+
+### Jump host (0.1.6)
+
+**Edit session > Jump host** lists the saved SSH sessions. When one is chosen, ConnSmith logs in to it first, with its own saved password, key and settings, and opens the connection to the device through it. Use it for devices that are reachable only from a bastion or management host.
+
+<img src="docs/images/jump-host-edit.png" alt="Edit session with the Jump host drop-down set to bastion" width="520">
+
+- The host key and login questions of the jump host are titled **Jump host**. The connection info panel shows it on the **Via** line.
+- One hop only.
+- A Shared session can use only a Shared session as its jump host, and a session moves to Shared only once its jump host is there.
+
+<img src="docs/images/jump-host-info.png" alt="A connected tab with the connection info panel showing Via bastion" width="900">
 
 ## Reporting problems
 
