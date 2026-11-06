@@ -41,7 +41,7 @@ Nothing downloads or installs without a click. The automatic check can be turned
 
 ### First launch
 
-A welcome window asks for the folder that holds saved sessions (the Personal store). The default is a `ConnSmith` folder in Documents, which OneDrive syncs between a user's own PCs. **Use this folder** accepts it.
+A welcome window of four short steps asks for the folder that holds saved sessions (the Personal store) first. The default is a `ConnSmith` folder in Documents, which OneDrive syncs between a user's own PCs. **Next** saves it. **(0.1.6)** The steps are Personal folder, app password, Shared folder and Shared password; Next and Finish wait, with a line saying why, while a password form is open and unsaved.
 
 <img src="docs/images/first-launch.png" alt="The Welcome window with the Personal store folder and the app password step" width="420">
 
@@ -115,7 +115,7 @@ COM ports are scanned every 2 seconds. When a USB console adapter is plugged in,
 
 ### Session tree and Shared sessions
 
-A single tree shows the Personal and Shared stores with their folders. The filter box searches name, host and folder. Sessions can be dragged between folders and between stores.
+A single tree shows the Personal and Shared stores with their folders. The filter box searches name, host and folder. Sessions can be dragged between folders and between stores. **(0.1.6)** Pick several sessions with Ctrl or Shift and drag any one of them: they all move. The right-click **Move…** opens a window of folders for one session or several, in Personal and in Shared. A session that can't move stays put and is named in a banner.
 
 <img src="docs/images/session-tree.png" alt="The session tree: Personal sessions, and Shared sessions grouped by client, optional site and device type, with a green dot on each connected session" width="300">
 
