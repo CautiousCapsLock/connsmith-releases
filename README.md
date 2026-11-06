@@ -148,7 +148,7 @@ The Shared store is edited by several people, so ConnSmith checks for the same t
 
 - **Empty folders:** after the last session leaves a Shared device folder (deleted, or moved to Personal or another Shared folder), ConnSmith asks **Delete the empty folder…?**. A client or site folder that the removal would also empty is included. Each folder has a tick box, all ticked to start with: untick one to keep it. A folder that holds one you kept stays too. With none ticked the button reads **Keep all** and deletes nothing. ConnSmith never deletes on its own, so a colleague who is about to add to the folder can keep it.
 
-<img src="docs/images/delete-empty-folder.png" alt="A confirmation: Delete 2 empty folders, listing Shared, Fabrikam, Leeds, Switches and Shared, Fabrikam, Leeds" width="460">
+<img src="docs/images/delete-empty-folder.png" alt="Delete 3 empty folders? with a tick box on each folder: Acme, London, Switches is ticked, London is unticked, and Acme is unticked and marked as staying because it holds a folder being kept; the button reads Delete 1 folder" width="460">
 
 ### Tabs, tab groups and split panes
 
