@@ -43,9 +43,9 @@ Nothing downloads or installs without a click. The automatic check can be turned
 
 A welcome window of four short steps asks for the folder that holds saved sessions (the Personal store) first. The default is a `ConnSmith` folder in Documents, which OneDrive syncs between a user's own PCs. **Next** saves it. **(0.1.6)** The steps are Personal folder, app password, Shared folder and Shared password; Next and Finish wait, with a line saying why, while a password form is open and unsaved.
 
-<img src="docs/images/first-launch.png" alt="The Welcome window with the Personal store folder and the app password step" width="420">
+<img src="docs/images/first-launch.png" alt="The Welcome window, step 1 of 4: the Personal folder" width="300"> <img src="docs/images/first-launch-password.png" alt="The Welcome window, step 2 of 4: the optional app password" width="300">
 
-Two optional settings follow. Both can be changed later in **Settings**.
+The app password and the Shared folder are optional, and both can be changed later in **Settings**.
 
 - **App password** (Settings > Security). Required at every start, before any session loads. It protects passwords saved in sessions and makes them usable on other PCs that share the same app password. Without it, saved passwords are readable on the PC that saved them only.
 - **Windows Hello.** With an app password set, **Settings > Security** can turn on unlock with Windows Hello (fingerprint, face or PIN) instead of the typed password. Hello is built into ConnSmith and starts no scripts. The setting is per PC, so a second PC needs the app password typed once before Hello is turned on there. Uninstalling ConnSmith switches Hello off, even if the settings are kept.
