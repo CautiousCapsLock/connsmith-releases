@@ -113,7 +113,7 @@ A single tree shows the Personal and Shared stores with their folders. The filte
 - **Multi-connect:** Ctrl+click or Shift+click selects several sessions, and Enter opens each in its own tab. Host key and password prompts appear one after another. **(0.1.6)** With several sessions selected, the right-click menu also offers **Move to Shared…** and **Delete N sessions…**. Delete lists the sessions and asks first.
 - **Collapse all (0.1.6):** the right-click menu of every folder, and of the Personal and Shared rows, folds the tree. ConnSmith remembers which folders were open.
 - **Shared store:** set the team folder in **Settings > Session stores**. Each user enters the same shared password once on their own PC.
-- **Move to Shared:** the right-click menu on a session or folder moves it to the Shared store after the share checks. A session that fails a check stays in Personal and the dialog gives the reason. **Session > Move many to Shared…** moves many sessions in one wizard. **(0.1.6)** The wizard's last step offers to delete the Personal folders the move left empty, with the tick box on.
+- **Move to Shared:** the right-click menu on a session or folder moves it to the Shared store after the share checks. A session that fails a check stays in Personal and the dialog gives the reason. **Session > Move many to Shared…** moves many sessions in one wizard. **(0.1.6)** The wizard's last step lists the Personal folders the move left empty, each with a tick box that is on to start with, and deletes the ones that stay ticked.
 - **OneDrive:** the tree shows a warning when shared files are online-only placeholders. The folder must be set to **Always keep on this device** in File Explorer.
 
 <img src="docs/images/shared-store.png" alt="Settings, Session stores: the Personal and Shared folders and the Shared password" width="760">
@@ -146,7 +146,7 @@ The Shared store is edited by several people, so ConnSmith checks for the same t
 
 <img src="docs/images/duplicates-review.png" alt="The Possible duplicates in Shared window listing two sessions with the same device and two folders with close names" width="640">
 
-- **Empty folders:** after the last session leaves a Shared device folder (deleted, or moved to Personal or another Shared folder), ConnSmith asks **Delete the empty folder…?**. A client or site folder that the removal would also empty is included. It never deletes on its own, so a colleague who is about to add to the folder can keep it.
+- **Empty folders:** after the last session leaves a Shared device folder (deleted, or moved to Personal or another Shared folder), ConnSmith asks **Delete the empty folder…?**. A client or site folder that the removal would also empty is included. Each folder has a tick box, all ticked to start with: untick one to keep it. A folder that holds one you kept stays too. With none ticked the button reads **Keep all** and deletes nothing. ConnSmith never deletes on its own, so a colleague who is about to add to the folder can keep it.
 
 <img src="docs/images/delete-empty-folder.png" alt="A confirmation: Delete 2 empty folders, listing Shared, Fabrikam, Leeds, Switches and Shared, Fabrikam, Leeds" width="460">
 
