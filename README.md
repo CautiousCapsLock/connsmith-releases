@@ -6,7 +6,7 @@ Terminal client for network engineers on Windows 11 (64-bit). Tabbed SSH, Telnet
 
 This repository publishes the installers only. Download them from the [Releases page](https://github.com/CautiousCapsLock/connsmith-releases/releases/latest).
 
-**Status:** in testing. The latest stable release is 0.1.9. Features marked **(0.2)** are in the 0.2.0 beta builds, which are pre-releases, and arrive in release 0.2. Unmarked features are in the latest stable release.
+**Status:** in testing. The latest stable release is 0.2.0.
 
 ## Contents
 
@@ -32,7 +32,7 @@ ConnSmith checks for a new release a few seconds after it starts and every 6 hou
 
 1. Select the cog. It opens **Settings > Updates**.
 2. Review **What's new** and select **Download update**.
-3. When the download finishes, select **Restart to update**. This closes ConnSmith and every open connection, installs the update and starts the new version. **(0.2)** The installer shows its progress and the step it is on until the new version opens.
+3. When the download finishes, select **Restart to update**. This closes ConnSmith and every open connection, installs the update and starts the new version. The installer shows its progress and the step it is on until the new version opens.
 
 Nothing downloads or installs without a click. The automatic check can be turned off on the same page. The **Dev builds** switch offers pre-releases for testing and is off by default.
 
@@ -90,7 +90,7 @@ Also included: host key verification against a known-hosts file, keepalives, a *
 
 **Known limitation:** devices that offer only `diffie-hellman-group1-sha1` (for example older Cisco IOS releases) cannot connect. The tab reports this.
 
-### Port forwarding (0.2)
+### Port forwarding
 
 An SSH session can open local port forwards when it connects, like `ssh -L`. A forward opens a port on the PC and passes connections through the device to a remote host and port. Typical use: reach a switch's own web page.
 
@@ -184,7 +184,7 @@ The Shared store is edited by several people, so ConnSmith checks for the same t
 
 ### Tabs, tab groups and split view
 
-Each connection opens in a tab. Tabs reorder by drag. **Move tab to new window** detaches a tab together with its connection and scrollback. The tab menu also closes other tabs or the tabs to the right. **Clone session (0.2)** opens the same session again in a new tab next to the first, in the same group. A serial port can only be opened once, so it cannot be cloned.
+Each connection opens in a tab. Tabs reorder by drag. **Move tab to new window** detaches a tab together with its connection and scrollback. The tab menu also closes other tabs or the tabs to the right. **Clone session** opens the same session again in a new tab next to the first, in the same group. A serial port can only be opened once, so it cannot be cloned.
 
 **Tab groups** keep the devices for one task together. **Connect as tab group…** in the tree's right-click menu opens the selected sessions as a named, coloured group, shown as a chip before its tabs. Selecting the chip folds the group. **Add to new group…** in a tab's menu groups tabs that are already open. Dragging a tab onto a group's chip, or onto any tab of the group, adds it, and the group lights up in its colour while the tab is held over it.
 
@@ -194,8 +194,8 @@ Each connection opens in a tab. Tabs reorder by drag. **Move tab to new window**
 
 **Split view.** **Split pane right** and **Split pane down**, in a tab's right-click menu and in the Tab menu, open a second connection to the same place beside or under the first. Each pane has its own connection and asks for its own login. Drag the bar between the panes to resize them. **Show beside: <tab>** puts another open tab, a serial console included, next to the current one without reconnecting either.
 
-- **(0.2)** The tab shows both panes. Each pane has a header with the session name and **Swap panes** and **Close pane** buttons, the pane being typed in is marked, and the divider is easier to see and grab.
-- **Close pane** closes one pane. **Close split view (0.2)** turns the split back into two tabs. Closing the tab closes both panes.
+- The tab shows both panes. Each pane has a header with the session name and **Swap panes** and **Close pane** buttons, the pane being typed in is marked, and the divider is easier to see and grab.
+- **Close pane** closes one pane. **Close split view** turns the split back into two tabs. Closing the tab closes both panes.
 - A tab holds two panes at most. A serial port cannot be split, but it can be shown beside another tab.
 - The command window's **Visible panes** option sends to both panes.
 
@@ -264,7 +264,7 @@ Graphite Orange (orange on grey) and Matrix (green on black):
 - The panel shows each server's address and, for SFTP and FTP, the login and a password generated each time the server is switched on.
 - The folder is read-only until **Allow uploads** is switched on. The switch resets at every start. Devices cannot delete files or directories.
 - Each transfer is listed with device, file, progress and speed. Refused requests are listed with the reason.
-- **Ports:** **Settings > File servers** sets a port for each server and a second port that is tried when the first is taken. The panel shows the port in use. **(0.2)** **Save ports** applies a change and updates the Windows Firewall rules at once, after one administrator approval. Leaving Settings with unsaved port changes asks first.
+- **Ports:** **Settings > File servers** sets a port for each server and a second port that is tried when the first is taken. The panel shows the port in use. **Save ports** applies a change and updates the Windows Firewall rules at once, after one administrator approval. Leaving Settings with unsaved port changes asks first.
 - **Allow in Windows Firewall** adds inbound rules for the ports in use only, after one administrator prompt. If Windows refuses, the panel says why and shows the equivalent `netsh` command.
 - SFTP refuses a request to append to a file, because uploads are stored whole, instead of quietly replacing it. TFTP serves a request that a device repeats before the first answer once, so no failed row appears beside the good one.
 
@@ -281,7 +281,7 @@ The final page offers **Move to Shared…**, which opens the wizard that assigns
 **Settings > SSH keys** holds the private keys that sessions can log in with. A key chosen in **Edit session** is tried before the password, and the password prompt follows if the device refuses it. Keys stay in their original files and are never copied into sessions or the Shared store. A Shared session never holds a key: each PC picks its own key for the session.
 
 - **Add key…** accepts OpenSSH and PEM private keys and PuTTY `.ppk` files: version 2 RSA, and version 3 (PuTTY 0.75 and later) RSA, ECDSA and ed25519, with or without a passphrase. No conversion in PuTTYgen is needed.
-- **Generate key… (0.2)** makes an Ed25519 or RSA 4096 key, with an optional passphrase and comment. The private key is saved to a file chosen in the save dialog, with the public key beside it as `.pub`. Existing files are never overwritten. The new key is added to the list straight away.
+- **Generate key…** makes an Ed25519 or RSA 4096 key, with an optional passphrase and comment. The private key is saved to a file chosen in the save dialog, with the public key beside it as `.pub`. Existing files are never overwritten. The new key is added to the list straight away.
 - **Copy public key** puts the public key line on the clipboard, ready to paste into the device's authorized keys.
 - The passphrase can be saved on the PC, protected by the Windows login. Removing a key does not delete its file. Sessions that used it go back to password login.
 
@@ -293,7 +293,7 @@ The final page offers **Move to Shared…**, which opens the wizard that assigns
 
 ## New session and Edit session
 
-**Session > New session…** and **Edit session** keep the common fields in view: name, protocol, host, port, username and login key. **(0.2)** Everything else sits behind **Advanced**, which opens by itself when the session already uses one of its settings:
+**Session > New session…** and **Edit session** keep the common fields in view: name, protocol, host, port, username and login key. Everything else sits behind **Advanced**, which opens by itself when the session already uses one of its settings:
 
 - Jump host and port forwards (SSH),
 - the inherited terminal settings (algorithms, backspace, encoding, scrollback, colours, font and cursor),
@@ -318,8 +318,8 @@ A setting left blank follows the Default session.
 - **Hostname check:** when the device prompt differs from the saved session name, ConnSmith offers to update the session. A switch in **Settings > Terminal** turns the offer off.
 - **Command palette** (Ctrl+Shift+P) for all menu actions.
 - **One window:** starting ConnSmith while it is already open brings the open window forward instead of starting a second copy.
-- **Pop-ups (0.2):** short pop-ups confirm that an address, username or password was copied, that a session was saved from Quick Connect, and that logging started or stopped. The COM port pop-up is smaller and slides in.
-- **Motion (0.2):** buttons, menus and dialogs have a little motion and clearer keyboard focus. Motion is skipped when Windows animation effects are off.
+- **Pop-ups:** short pop-ups confirm that an address, username or password was copied, that a session was saved from Quick Connect, and that logging started or stopped. The COM port pop-up is smaller and slides in.
+- **Motion:** buttons, menus and dialogs have a little motion and clearer keyboard focus. Motion is skipped when Windows animation effects are off.
 
 ## Reporting problems
 
